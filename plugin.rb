@@ -130,6 +130,9 @@ class OmniAuth::Strategies::Auth0 < OmniAuth::Strategies::OAuth2
   end
 
   def no_client_id?
+	puts "no_client_id"
+    puts options
+	puts options.client_id
     ['', nil].include?(options.client_id)
   end
 
