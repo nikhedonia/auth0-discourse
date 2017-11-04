@@ -46,7 +46,11 @@
         lock.hide();
       }
       return this._super.apply(this, arguments);
-    }
+    },
+	
+	login: function (){
+	  console.log("Login button clicked");
+	}
   });
 
   var ApplicationRoute = require('discourse/routes/application').default;

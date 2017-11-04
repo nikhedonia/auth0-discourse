@@ -128,24 +128,25 @@ class OmniAuth::Strategies::Auth0 < OmniAuth::Strategies::OAuth2
     userinfo_url = options.client_options.userinfo_url
     @raw_info ||= access_token.get(userinfo_url).parsed
   end
-
+  
   def no_client_id?
 	puts "no_client_id"
     puts options
 	puts options.client_id
-    ['', nil].include?(options.client_id)
+	puts SiteSetting.auth0_domain
+    ['', nil].include?(SiteSetting.auth0_client_id)
   end
 
   def no_client_secret?
-    ['', nil].include?(options.client_secret)
+    ['', nil].include?(SiteSetting.auth0_client_secret)
   end
 
   def no_domain?
-    ['', nil].include?(options.domain)
+    ['', nil].include?(SiteSetting.auth0_domain)
   end
 
   def domain_url
-    domain_url = URI(options.domain)
+    domain_url = URI(SiteSetting.auth0_domain)
     domain_url = URI("https://#{domain_url}") if domain_url.scheme.nil?
     domain_url.to_s
   end
