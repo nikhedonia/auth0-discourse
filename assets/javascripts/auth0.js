@@ -47,9 +47,10 @@
       }
       return this._super.apply(this, arguments);
     },
-	
-	login: function (){
-	  console.log("Login button clicked");
+	actions: {
+		login: function (){
+		  console.log("Login button clicked");
+		}
 	}
   });
 
